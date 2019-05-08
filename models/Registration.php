@@ -48,4 +48,11 @@ class Registration extends CI_Model
 		$this->db->where('id',$this->input->post('id'));
 		return $this->db->update('users', $data);
     }
+
+    public function delete($id)
+    {
+		$this->db->where('id',$id);
+        $this->db->delete('users');
+        return true;
+    }
 }

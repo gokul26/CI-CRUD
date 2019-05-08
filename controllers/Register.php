@@ -53,14 +53,21 @@ class Register extends CI_Controller {
         $this->load->view('imports/footer');
     }
     
-    
 	public function update($slug= NULL)
 	{
         $data['posts'] = $this->registration->allposts($slug);
         $data['title'] = "Edit User Details";
         $this->registration->update();
         //Set Message
-        $this->session->set_flashdata('user_registered','Successfully Registered.');
+        $this->session->set_flashdata('user_edited','Successfully Edited.');
         redirect('register');
-	}
+    }
+    
+    public function delete($id)
+    {
+        $this->registration->delete($id);
+        //Set Message
+        $this->session->set_flashdata('user_deleted','Successfully Removed.');
+        redirect('register');
+    }
 }
