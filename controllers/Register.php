@@ -38,5 +38,29 @@ class Register extends CI_Controller {
         	redirect('register');
         }
 
+    }
+    
+    
+	public function edit($slug = NULL)
+	{
+        // print_r ($_POST);
+        
+        $data['posts'] = $this->registration->allposts($slug);
+
+        $data['title'] = "User Details";
+        $this->load->view('imports/header');
+        $this->load->view('edit_user',$data);
+        $this->load->view('imports/footer');
+    }
+    
+    
+	public function update($slug= NULL)
+	{
+        $data['posts'] = $this->registration->allposts($slug);
+        $data['title'] = "Edit User Details";
+        $this->registration->update();
+        //Set Message
+        $this->session->set_flashdata('user_registered','Successfully Registered.');
+        redirect('register');
 	}
 }
