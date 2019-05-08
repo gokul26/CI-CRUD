@@ -10,6 +10,14 @@ class Registration extends CI_Model
 		$this->load->database();
 	}
 
+
+    public function allposts()
+    {
+        $this->db->order_by('users.id','DESC');
+        $query = $this->db->get('users');
+        return $query->result_array();
+    }
+
     public function submit()
     {
         

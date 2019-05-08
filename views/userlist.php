@@ -25,18 +25,3 @@
 <?php echo form_close(); ?>
 </div>
 </div>
-
-<?php foreach ($posts as $post):?>
-	<h3>
-		<?php echo "Name: ".$post['name']; ?>
-	</h3>
-	<div class="row">
-		<div class="col-md-9">
-		<?php echo "Email-Id: ".$post['email']; ?>
-	<br>
-	<?php echo "Username: ".$post['username'];?>
-	<p><a class="btn btn-default" href="<?php echo site_url('/register/edit/'.$post['id']); ?>">Edit</a></p>
-    <p><a class="btn btn-default" href="<?php echo site_url('/register/delete/'.$post['id']); ?>">Delete</a></p>
-		</div>
-	</div>
-<?php endforeach; ?>

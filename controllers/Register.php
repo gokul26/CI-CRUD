@@ -6,6 +6,8 @@ class Register extends CI_Controller {
 	public function index()
 	{
         $data['title']='Register Here!';
+        $data['Type']='User-List';
+        $data['posts'] = $this->registration->allposts();
 
         $this->load->view('imports/header');
         $this->load->view('register_home',$data);
@@ -15,6 +17,8 @@ class Register extends CI_Controller {
 	public function create()
 	{
         // print_r ($_POST);
+        
+        $data['posts'] = $this->registration->allposts();
     	$this->form_validation->set_rules('name','Name','required');
         $this->form_validation->set_rules('email','Email','required');
         $this->form_validation->set_rules('username','Username','required');
