@@ -33,3 +33,16 @@ $this->load->helper('url');
   </div>
 </div>
 <div class="container-fluid">
+
+      <!-- Flash messages -->
+      <?php if($this->session->flashdata('user_registered')): ?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_registered').'</p>'; ?>
+      <?php endif; ?>
+
+      <?php if($this->session->flashdata('user_edited')): ?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_edited').'</p>'; ?>
+      <?php endif; ?>
+
+      <?php if($this->session->flashdata('user_deleted')): ?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_deleted').'</p>'; ?>
+      <?php endif; ?>

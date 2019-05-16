@@ -26,12 +26,13 @@ class Registration extends CI_Model
         }
     }
 
-    public function submit()
+    public function submit($prof_pic)
     {
 		$data = array(
 			'name' => $this->input->post('name'),
 			'username'	=> $this->input->post('username'),
-			'email' => $this->input->post('email')
+            'email' => $this->input->post('email'),
+            'profilepic' => $prof_pic
 		);
 
 		return $this->db->insert('users', $data);

@@ -32,7 +32,27 @@ class Register extends CI_Controller {
         }
         else
         {
-        	$this->registration->submit();
+            // Upload Image
+            $config['upload_path'] = './assets/images/profile';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = '2048';
+            $config['max_width'] = '2000';
+            $config['max_height'] = '2000';
+
+            $this->load->library('upload', $config);
+            
+            if(!$this->upload->do_upload('profilepic'))
+            {
+                $errors = array('error' => $this->upload->display_errors());
+                $prof_pic= 'noimage.jpg';
+            } 
+            else 
+            {
+                $data = array('upload_data' => $this->upload->data());
+                $prof_pic = $_FILES['profilepic']['name'];
+            }
+
+        	$this->registration->submit($prof_pic);
             //Set Message
             $this->session->set_flashdata('user_registered','Successfully Registered.');
         	redirect('register');
